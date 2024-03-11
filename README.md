@@ -42,11 +42,11 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 flowchart LR
     admin{{admin}}-->|"/a/..."|Trafiek
     Trafiek-->|"Backend"|Laravel
-    Laravel-->Save
-    Laravel-->|"Session"|Redis
+    Laravel-->Save[/Save/]
+    Laravel-->|"Session"|Redis[(Redis)]
     Save-->|"read/write"|Postgres[(Postgres)]
     Save-->|"write"|MongoDB[(MongoDB)]
-    user{{user}}-->|"/l/..."|Trafiek[/Trafiek\]
+    user{{user}}-->|"/l/..."|Trafiek{Trafiek}
     Trafiek-->|"Frontend"|GO-->|"read"|MongoDB[(MongoDB)]
     GO-->|"Session"|Redis
 ```

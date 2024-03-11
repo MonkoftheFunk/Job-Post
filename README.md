@@ -27,7 +27,7 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 
 ### TODO
 - Build a simple CRUD backend to the dashboard
-- Connect mongo to laravel and add new models
+- Connect MongoDB to Laravel and add new models
 - Use observers to store data to mongo for frontend
 - Build GO server project
 - Add GO frontend endpoints
@@ -43,8 +43,10 @@ flowchart LR
     admin{{admin}}-->|"/a/..."|Trafiek
     Trafiek-->|"Backend"|Laravel
     Laravel-->Save
+    Laravel-->|"Session"|Redis
     Save-->|"read/write"|Postgres[(Postgres)]
     Save-->|"write"|MongoDB[(MongoDB)]
     user{{user}}-->|"/l/..."|Trafiek[/Trafiek\]
     Trafiek-->|"Frontend"|GO-->|"read"|MongoDB[(MongoDB)]
+    GO-->|"Session"|Redis
 ```

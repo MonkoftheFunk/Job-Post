@@ -17,7 +17,7 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 - npm run dev
   - This will start VITE
 - docker exec -it platform-app php artisan db:seed
-  - And This will populate the database with users, listings and tags
+  - And this will populate the database with users, listings and tags
 - [http://localhost:9180/](http://localhost:9180/)
 
 ### Screenshots
@@ -28,13 +28,15 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 ### TODO
 - Build a simple CRUD backend to the dashboard
 - Connect MongoDB to Laravel and add new models
-- Use observers to store data to mongo for frontend
+- Use observers to store data to MongoDB for frontend Vue views
 - Build GO server project
 - Add GO frontend endpoints
 - Copy and serve same Vue/Inertia files from GO
 - Wire up GO server into docker-compose for Trafiek to route to
 - Move Vue files to own repo that both repos can share
-- Locust compare laravel and go frontend
+- Locust compare Laravel and GO frontend performance
+- Share Redis user session
+- Seamless login
 - Get Stripe working
 - Get Uploads working
 

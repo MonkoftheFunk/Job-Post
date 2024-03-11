@@ -20,6 +20,10 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
   - And This will populate the database with users, listings and tags
 - [http://localhost:9180/](http://localhost:9180/)
 
+### Screenshots
+![](./readme/list.png)
+![](./readme/create.png)
+![](./readme/view.png)
 
 ### TODO
 - Build a simple CRUD backend to the dashboard

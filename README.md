@@ -38,3 +38,13 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 - Get Stripe working
 - Get Uploads working
 
+```mermaid
+flowchart LR
+    admin{{admin}}-->|"/a/..."|Trafiek
+    Trafiek-->|"Backend"|Laravel
+    Laravel-->Save
+    Save-->|"read/write"|Postgres[(Postgres)]
+    Save-->|"write"|MongoDB[(MongoDB)]
+    user{{user}}-->|"/l/..."|Trafiek[/Trafiek\]
+    Trafiek-->|"Frontend"|GO-->|"read"|MongoDB[(MongoDB)]
+```

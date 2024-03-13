@@ -52,4 +52,3 @@ flowchart LR
     Trafiek-->|"Frontend"|GO-->|"read"|MongoDB[(MongoDB)]
     GO-->|"Session"|Redis
 ```
-RetroFE Enhancements

@@ -64,7 +64,7 @@ const normalClass = ref('bg-white text-indigo-500')
                 <div class="md:flex-grow mr-8 flex items-center justify-start">
                     <span v-for="tag in listing.tags"
                           class="inline-block ml-2 tracking-wide text-xs font-medium title-font py-0.5 px-1.5 border border-indigo-500 uppercase "
-                          :class="[tag.slug === activeTag ? activeClass : normalClass]">
+                          :class="[tag.slug === active_tag ? activeClass : normalClass]">
                            {{ tag.name }}
                     </span>
                 </div>

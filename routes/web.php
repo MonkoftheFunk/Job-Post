@@ -31,9 +31,15 @@ Route::get('/a/new', [Controllers\ListingController::class, 'create'])
 Route::post('/a/new', [Controllers\ListingController::class, 'store'])
     ->name('admin.listings.store');
 
-Route::get('/dashboard', static function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/a/dashboard',[Controllers\ListingController::class, 'dashboard'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+Route::get('/a/{listing}/edit', [Controllers\ListingController::class, 'edit'])
+    ->middleware(['auth', 'verified'])
+    ->name('admin.listings.edit');
+Route::put('/a/{listing}/update', [Controllers\ListingController::class, 'update'])
+    ->middleware(['auth', 'verified'])
+    ->name('admin.listings.update');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

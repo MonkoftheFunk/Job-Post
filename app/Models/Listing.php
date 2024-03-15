@@ -14,7 +14,7 @@ class Listing extends Model
 
     protected $guarded = [];
 
-    protected $appends = ['sinceCreated', 'logoUri', 'clicksCount'];
+    protected $appends = ['sinceCreated', 'logoUri', 'clicksCount', 'tagsCSV'];
 
     public function getRouteKeyName(): string
     {
@@ -49,5 +49,12 @@ class Listing extends Model
     public function getClicksCountAttribute(): string
     {
         return $this->clicks()->count();
+    }
+
+    public function getTagsCSVAttribute(): string
+    {
+        return implode(',', array_map(static function($t) {
+           return $t->name;
+        }, $this->tags()->get()->all()));
     }
 }

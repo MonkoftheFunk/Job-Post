@@ -2,9 +2,11 @@
 
 namespace App\Observers;
 
+use Illuminate\Support\Facades\Log;
 use MongoDB\Laravel\Eloquent\Model;
+use Illuminate\Contracts\Events\ShouldHandleEventsAfterCommit;
 
-class MongoIngestObserver
+class MongoIngestObserver implements ShouldHandleEventsAfterCommit
 {
     /**
      * @param IngestInterface $ingest
@@ -13,10 +15,11 @@ class MongoIngestObserver
      */
     protected static function resolve(IngestInterface $ingest): Model
     {
-        $class_name = get_class($ingest);
-        $mongo_model = 'App\Models\Mongo' . $$class_name;
+        $reflect = new \ReflectionClass($ingest);
+        $class_name = $reflect->getShortName();
+        $mongo_model = 'App\Models\Mongo\\' . $class_name;
         if (!class_exists($mongo_model)) {
-            throw new \RuntimeException('Mongo Model doesn\'t exist for model ' . $class_name);
+            throw new \Exception('Mongo Model doesn\'t exist for model ' . $class_name);
         }
 
         return new $mongo_model();
@@ -32,7 +35,7 @@ class MongoIngestObserver
         $model = self::resolve($ingest);
         $model->setRawAttributes($ingest->getAttributes());
         if (!$model->save()) {
-            // todo log
+            Log::error('Failed to save ingest. ID: ' . $ingest->id . ' Class: ' . $model::class);
         }
     }
 

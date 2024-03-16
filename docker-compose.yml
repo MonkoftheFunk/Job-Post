@@ -67,11 +67,11 @@ services:
       ports:
           - "27018:27017"
       volumes:
-          - ./tmp/mongodb:/bitnami/mongodb
+          - mongodb-data:/data/db
+          - mongodb-log:/var/log/mongodb
       environment:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
-          MONGO_INITDB_DATABASE: jobpost
 
   nginx:
     image: nginx:1.17-alpine
@@ -86,7 +86,11 @@ services:
 
 volumes:
     db-data_postgres:
-        driver: "local"
+        driver: local
+    mongodb-data:
+        driver: local
+    mongodb-log:
+        driver: local
 networks:
   platform:
     driver: bridge

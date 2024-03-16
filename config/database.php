@@ -37,8 +37,8 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('MONGO_DB_URI', 'mongodb://root:example@mongo:27017/'),
-            'database' => 'jobpost',
+            'dsn' => env('MONGO_DB_URI', 'mongodb://admin:admin@mongo:27017/'),
+            'database' => 'platform',
         ],
 
         'sqlite' => [

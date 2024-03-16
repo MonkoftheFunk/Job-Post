@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -166,7 +167,7 @@ class ListingController extends Controller
 
             return redirect()->route('listings.index');
         } catch (\Exception $e) {
-
+            Log::error('Exception: ' . $e::class . ' ' . $e->getMessage() . ' ' . $e->getTraceAsString());
             /** @noinspection MissedFieldInspection */
             return redirect()->back()
                 ->withErrors(['error' => $e->getMessage()]);

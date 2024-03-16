@@ -20,7 +20,6 @@ class Listing extends Model implements IngestInterface
      * @var array<string>|bool
      */
     protected $guarded = [];
-
     /**
      * The accessors to append to the model's array form.
      *
@@ -48,40 +47,71 @@ class Listing extends Model implements IngestInterface
         return 'slug';
     }
 
+    /**
+     * @return HasMany
+     */
     public function clicks(): HasMany
     {
         return $this->hasMany(Click::class);
     }
 
+    /**
+     * @return BelongsTo
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return BelongsToMany
+     */
     public function tags(): BelongsToMany
     {
         return $this->belongsToMany(Tag::class);
     }
 
+    /**
+     * @return string
+     */
     public function getSinceCreatedAttribute(): string
     {
         return $this->created_at ? $this->created_at->diffForHumans() : '';
     }
 
+    /**
+     * @return string
+     */
     public function getLogoUriAttribute(): string
     {
         return asset('storage/' . basename($this->logo));
     }
 
+    /**
+     * @return string
+     */
     public function getClicksCountAttribute(): string
     {
         return $this->clicks()->count();
     }
 
+    /**
+     * @return string
+     */
     public function getTagsCSVAttribute(): string
     {
         return implode(',', array_map(static function ($t) {
             return $t->name;
         }, $this->tags()->get()->all()));
+    }
+
+    /**
+     * IngestInterface
+     *
+     * @return array
+     */
+    public function getIngest(): array
+    {
+        return $this->toArray();
     }
 }

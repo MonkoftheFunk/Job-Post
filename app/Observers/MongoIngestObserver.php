@@ -33,7 +33,7 @@ class MongoIngestObserver implements ShouldHandleEventsAfterCommit
     public function created(IngestInterface $ingest): void
     {
         $model = self::resolve($ingest);
-        $model->setRawAttributes($ingest->getAttributes());
+        $model->setRawAttributes($ingest->getIngest());
         if (!$model->save()) {
             Log::error('Failed to save ingest. ID: ' . $ingest->id . ' Class: ' . $model::class);
         }

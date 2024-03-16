@@ -153,7 +153,7 @@ class ListingController extends Controller
                     'location' => $request->location,
                     'link' => $request->link,
                     'content' => $md->text($request->input('content')),
-                    'is_highlighted' => $request->filled('is_highlighted'),
+                    'is_highlighted' => $request->filled('is_highlighted') && $request->is_highlighted === true,
                     'is_active' => true
                 ]);
             foreach (explode(',', $request->tags) as $request_tag) {

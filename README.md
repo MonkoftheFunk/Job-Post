@@ -27,7 +27,7 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 
 ### TODO
 - ~Build a simple CRUD backend to the dashboard~
-- Connect MongoDB to Laravel and add new models
+- ~Connect MongoDB to Laravel and add new models~
 - Use observers to store data to MongoDB for frontend Vue views
 - ~Build GO server project~ [Link](https://github.com/MonkoftheFunk/Job-Post-FE)
 - Add GO frontend endpoints

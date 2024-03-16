@@ -245,7 +245,7 @@ class ListingController extends Controller
             $existing_tags = $listing->tags()->get()->keyBy('name')->all();
             $existing_tag_names = array_keys($existing_tags);
             $updated_tag_names = explode(',', trim($request->tags, ','));
-            if (!reset($updated_tag_names) && $existing_tag_names) {
+            if ($existing_tag_names && !reset($updated_tag_names)) {
                 $listing->tags()->detach();
             } else {
                 // remove

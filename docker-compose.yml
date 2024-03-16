@@ -71,9 +71,7 @@ services:
       environment:
           MONGO_INITDB_ROOT_USERNAME: root
           MONGO_INITDB_ROOT_PASSWORD: example
-          MONGODB_USERNAME: root
-          MONGODB_PASSWORD: example
-          MONGODB_DATABASE: jobpost
+          MONGO_INITDB_DATABASE: jobpost
 
   nginx:
     image: nginx:1.17-alpine

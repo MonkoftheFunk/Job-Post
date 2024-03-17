@@ -20,7 +20,24 @@ services:
     working_dir: /var/www/
     volumes:
       - ./:/var/www:rw
-  #TODO GOLANG Frontend server
+  # GOLANG Frontend server
+  appfe:
+      container_name: platform-fe
+      build:
+          context: ../Job-Post-FE
+          dockerfile: Dockerfile
+      ports:
+          - "9480:9080"
+      volumes:
+          - ../Job-Post-FE:/app:rw
+      environment:
+          MONGO_DB_DSN: ${MONGO_DB_DSN}
+          PORT: 9080
+      command:
+          - go
+          - run
+          - .
+          - app
   traefik:
       image: traefik:v2.9
       command:

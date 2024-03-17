@@ -42,6 +42,7 @@ const form = useForm({
                 <div v-if="!$page.props.auth.user">
                     <div class="flex mb-4">
                         <div class="flex-1 mx-2">
+                            <InputError class="mt-2" :message="form.errors.email"/>
                             <InputLabel value="Email Address"/>
                             <TextInput
                                 v-model="form.email"
@@ -53,6 +54,7 @@ const form = useForm({
                                 autofocus/>
                         </div>
                         <div class="flex-1 mx-2">
+                            <InputError class="mt-2" :message="form.errors.name"/>
                             <InputLabel value="Full Name"/>
                             <TextInput
                                 v-model="form.name"
@@ -65,6 +67,7 @@ const form = useForm({
                     </div>
                     <div class="flex mb-4">
                         <div class="flex-1 mx-2">
+                            <InputError class="mt-2" :message="form.errors.password"/>
                             <InputLabel value="Password"/>
                             <TextInput
                                 v-model="form.password"
@@ -75,6 +78,7 @@ const form = useForm({
                                 required/>
                         </div>
                         <div class="flex-1 mx-2">
+                            <InputError class="mt-2" :message="form.errors.password_confirmation"/>
                             <InputLabel value="Confirm Password"/>
                             <TextInput
                                 v-model="form.password_confirmation"

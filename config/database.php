@@ -37,7 +37,7 @@ return [
 
         'mongodb' => [
             'driver' => 'mongodb',
-            'dsn' => env('MONGO_DB_URI', 'mongodb://admin:admin@mongo:27017/'),
+            'dsn' => env('MONGO_DB_DSN', 'mongodb://admin:admin@mongo:27017/'),
             'database' => 'platform',
         ],
 

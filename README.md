@@ -18,7 +18,7 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
   - This will start VITE
 - docker exec -it platform-app php artisan db:seed
   - And this will populate the database with users, listings and tags
-- [http://localhost:9180/](http://localhost:9180/)
+- [http://localhost/](http://localhost/)
 
 ### Screenshots
 ![](./readme/list.png)
@@ -33,6 +33,7 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 - ~Add GO frontend endpoints~
 - ~Copy and serve same Vue/Inertia files from GO~
 - ~Wire up GO server into docker-compose for Trafiek to route to~
+  - Trafiek admin is port 8080
   - You can still see Laravel using port 9980 and Go port 9580
 - Move Vue files to own repo that both repos can share
 - Locust compare Laravel and GO frontend performance

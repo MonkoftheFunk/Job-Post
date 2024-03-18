@@ -1,11 +1,6 @@
 version: '3.8'
 services:
   app:
-    labels:
-        - traefik.enable=true
-        - traefik.http.routers.app-server.rule=PathPrefix(`/`) #TODO Filter to support backend admin
-        - traefik.http.services.app-server.loadbalancer.server.port=80
-        - traefik.http.routers.app-server.entrypoints=http
     build:
       args:
         user: tcontreras
@@ -20,19 +15,23 @@ services:
     working_dir: /var/www/
     volumes:
       - ./:/var/www:rw
-  # GOLANG Frontend server
   appfe:
+      labels:
+          - traefik.enable=true
+          - traefik.http.routers.appfe-server.rule=PathPrefix(`/l/`) || PathPrefix(`/`)
+          - traefik.http.services.appfe-server.loadbalancer.server.port=80
+          - traefik.http.routers.appfe-server.entrypoints=http
       container_name: platform-fe
       build:
           context: ../Job-Post-FE
           dockerfile: Dockerfile
       ports:
-          - "9480:9080"
+          - "9580:80"
       volumes:
           - ../Job-Post-FE:/app:rw
       environment:
           MONGO_DB_DSN: ${MONGO_DB_DSN}
-          PORT: 9080
+          PORT: 80
       command:
           - go
           - run
@@ -49,7 +48,7 @@ services:
           - "--entrypoints.http.address=:80"
           - "--accesslog"
       ports:
-          #- "80:80"
+          - "80:80"
           - "8080:8080"
       volumes:
           - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -91,11 +90,16 @@ services:
           MONGO_INITDB_ROOT_PASSWORD: example
 
   nginx:
+    labels:
+          - traefik.enable=true
+          - traefik.http.routers.nginx-server.rule=PathPrefix(`/a/`) || PathPrefix(`/login`)
+          - traefik.http.services.nginx-server.loadbalancer.server.port=80
+          - traefik.http.routers.nginx-server.entrypoints=http
     image: nginx:1.17-alpine
     container_name: platform-nginx
     restart: unless-stopped
     ports:
-      - "9180:80"
+      - "9980:80"
     volumes:
       - ./:/var/www
       - ./storage:/var/www/html/storage

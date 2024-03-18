@@ -30,9 +30,10 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 - ~Connect MongoDB to Laravel and add new models~
 - ~Use observers to store data to MongoDB for frontend Vue views~
 - ~Build GO server project~ [Link](https://github.com/MonkoftheFunk/Job-Post-FE)
-- Add GO frontend endpoints
-- Copy and serve same Vue/Inertia files from GO
-- Wire up GO server into docker-compose for Trafiek to route to
+- ~Add GO frontend endpoints~
+- ~Copy and serve same Vue/Inertia files from GO~
+- ~Wire up GO server into docker-compose for Trafiek to route to~
+  - You can still see Laravel using port 9980 and Go port 9580
 - Move Vue files to own repo that both repos can share
 - Locust compare Laravel and GO frontend performance
 - Share Redis user session

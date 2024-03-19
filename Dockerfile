@@ -23,9 +23,11 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install PHP extensions
 RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd
 
-# Install MONGO
+# Install MONGO & Redis
 RUN pecl install mongodb \
-    &&  echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongo.ini
+    &&  echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongo.ini \
+    && pecl install redis \
+    && docker-php-ext-enable redis.so
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

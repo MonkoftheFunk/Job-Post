@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Redis\RedisServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 use MongoDB\Laravel\MongoDBServiceProvider;
@@ -170,6 +171,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         MongoDBServiceProvider::class,
+        RedisServiceProvider::class,
     ])->toArray(),
 
     /*

@@ -233,7 +233,9 @@ class ListingController extends Controller
             $md = new \ParsedownExtra();
             $listing->update([
                 'title' => $request->title,
-                'slug' => $request->title === $listing->title ? $listing->title : Str::slug($request->title) . '-' . random_int(1111, 9999),
+                'slug' => $request->title === $listing->title ? $listing->title : Str::slug(
+                        $request->title
+                    ) . '-' . random_int(1111, 9999),
                 'company' => $request->company,
                 //'logo' => basename($request->file('logo')->store('public')), // todo
                 'location' => $request->location,

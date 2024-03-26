@@ -32,6 +32,10 @@ services:
       environment:
           MONGO_DB_DSN: ${MONGO_DB_DSN}
           PORT: 80
+          REDIS_DB_DSN: redis://${REDIS_HOST}:${REDIS_PORT}/0?protocol=3
+          APP_KEY: ${APP_KEY}
+          SESSION_COOKIE_NAME: platform_session
+          SESSION_PREFIX: platform_database_platform_cache_
       command:
           - go
           - run

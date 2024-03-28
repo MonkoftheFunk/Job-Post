@@ -8,6 +8,7 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 - https://inertiajs.com/
 - https://github.com/romsar/gonertia
 - https://github.com/petaki/inertia-go
+- https://vitejs.dev/
 
 ### Setup
 - docker-compose build

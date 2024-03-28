@@ -1,6 +1,6 @@
 ## About 
 
-Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vue 3, and Inertia. Eventually building a GO microservice that also uses Inertia to handle the frontend high load requests, loading its data from MongoDB, populated by Laravel and Postgres. Traefik will handle the routing of the frontend GO and the backend Laravel requests. I built a docker-compose for easy development as it uses many services.
+Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vue 3, and Inertia, and also a [GO microservice](https://github.com/MonkoftheFunk/Job-Post-FE) that also uses Inertia to handle the frontend high load requests, loading its data from MongoDB, populated by Laravel and Postgres. Traefik will handle the routing of the frontend GO and the backend Laravel requests. I built a docker-compose for easy development as it uses many services.
 
 ### Resources
 - Converted [this](https://www.youtube.com/playlist?list=PL36CGZHZJqsWs907QwJrWSbN2g2NNPn6w) tutorial from blade views to Inertia/Vue3 
@@ -35,10 +35,11 @@ Built this "Job Posting" proof of concept to experiment more with Laravel 10, Vu
 - ~Wire up GO server into docker-compose for Trafiek to route to~
   - Trafiek admin is port 8080
   - You can still see Laravel using port 9980 and Go port 9580
+- ~Share Redis user session with GO Job-Post-FE~
+- ~Seamless login~
 - Move Vue files to own repo that both repos can share
 - Locust compare Laravel and GO frontend performance
-- Share Redis user session
-- Seamless login
+
 - Get Stripe working
 - Get Uploads working
 

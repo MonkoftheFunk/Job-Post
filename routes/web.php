@@ -20,26 +20,32 @@ use App\Http\Controllers;
 // frontend
 Route::get('/', [Controllers\ListingController::class,'index'])
     ->name('listings.index');
-Route::get('/l/{listing}', [Controllers\ListingController::class,'show'])
-    ->name('listings.show');
-Route::get('/l/{listing}/apply', [Controllers\ListingController::class, 'apply'])
-    ->name('listings.apply');
+
+Route::group(['prefix'=>'l'], static function(){
+    Route::get('{listing}', [Controllers\ListingController::class,'show'])
+        ->name('listings.show');
+    Route::get('{listing}/apply', [Controllers\ListingController::class, 'apply'])
+        ->name('listings.apply');
+});
+
 
 // backend
-Route::get('/a/new', [Controllers\ListingController::class, 'create'])
-    ->name('admin.listings.create');
-Route::post('/a/new', [Controllers\ListingController::class, 'store'])
-    ->name('admin.listings.store');
+Route::group(['prefix'=>'a'], static function(){
+    Route::get('new', [Controllers\ListingController::class, 'create'])
+        ->name('admin.listings.create');
+    Route::post('new', [Controllers\ListingController::class, 'store'])
+        ->name('admin.listings.store');
 
-Route::get('/a/dashboard',[Controllers\ListingController::class, 'dashboard'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-Route::get('/a/{listing}/edit', [Controllers\ListingController::class, 'edit'])
-    ->middleware(['auth', 'verified'])
-    ->name('admin.listings.edit');
-Route::put('/a/{listing}/update', [Controllers\ListingController::class, 'update'])
-    ->middleware(['auth', 'verified'])
-    ->name('admin.listings.update');
+    Route::get('dashboard',[Controllers\ListingController::class, 'dashboard'])
+        ->middleware(['auth', 'verified'])
+        ->name('dashboard');
+    Route::get('{listing}/edit', [Controllers\ListingController::class, 'edit'])
+        ->middleware(['auth', 'verified'])
+        ->name('admin.listings.edit');
+    Route::put('{listing}/update', [Controllers\ListingController::class, 'update'])
+        ->middleware(['auth', 'verified'])
+        ->name('admin.listings.update');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
